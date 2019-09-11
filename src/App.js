@@ -12,7 +12,6 @@ function App() {
         setApodData(respo.data);
       })
       .catch(err => console.log('Messed up axios call', err));
- 
   }, [date]);
 
 return (
