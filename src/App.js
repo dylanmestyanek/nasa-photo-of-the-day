@@ -1,6 +1,23 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
 import ApodCard from "./components/ApodCard";
+
+const CardContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const DatePicker = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background: rgba(100, 150, 200, .8);
+  padding: 0 20px;
+  border-radius: 5px;
+`;
 
 function App() {
   const [apodData, setApodData] = useState({});
@@ -15,13 +32,13 @@ function App() {
   }, [date]);
 
 return (
-  <div className="card-container">
-    <div className="date-picker-container">
+  <CardContainer>
+    <DatePicker>
       <h2>Pick your date to visit:</h2>
       <input onChange={e => setDate(e.target.value)} type="date" />
-    </div>
+    </DatePicker>
       <ApodCard title={apodData.title} copyright={apodData.copyright} date={apodData.date} explanation={apodData.explanation} imgUrl={apodData.hdurl}/>
-    </div>
+    </CardContainer>
   );
 }
 
