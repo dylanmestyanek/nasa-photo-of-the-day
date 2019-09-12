@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const ApodContainer = styled.div`
+const SwagContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
@@ -10,13 +10,23 @@ const ApodContainer = styled.div`
         margin: 30px auto 0;
 `;
 
-const ImgContainer = styled.div`
+const SuperSnazzy = styled.div`
     display: flex;
     flex-direction: column;
     width: 30%;
+
+    img {
+        width: 68%;
+        border-radius: 5px;
+        box-shadow: 5px 6px 5px 3px rgba(0, 0, 0, .8);
+    }
+
+    span {
+        margin-top: 10px;
+    }
 `;
 
-const ApodText = styled.div`
+const YeehawCowboy = styled.div`
     width: 50%;
     border-radius: 5px;
     padding: 8px 20px;
@@ -26,19 +36,25 @@ const ApodText = styled.div`
     box-shadow: 5px 6px 5px 3px rgba(58, 24, 24, 0.8);
 `;
 
-const ApodCard = ({ title, copyright, date, explanation, imgUrl }) => {
+const ApodCard = ({ 
+    title, 
+    copyright, 
+    date, 
+    explanation, 
+    imgUrl }) => {
+
     return (
-        <ApodContainer>
-            <ImgContainer>
+        <SwagContainer>
+            <SuperSnazzy>
                 <img src={imgUrl} alt="Nasa" />
                 <span><em>Published:</em> {date}</span>
-            </ImgContainer>
-            <ApodText> 
+            </SuperSnazzy>
+            <YeehawCowboy> 
                 <h1>{title}</h1>
-                <h2><em>{copyright}</em></h2>
+                <h2><em>{copyright}yeehaw</em></h2>
                 <p>{explanation}</p>
-            </ApodText>
-        </ApodContainer>
+            </YeehawCowboy>
+        </SwagContainer>
     );
 }
 

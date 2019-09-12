@@ -1,7 +1,33 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import ApodCard from "./components/ApodCard";
+import renderer from "react-test-renderer";
+
+describe('swag', () => {
+  it ('swagggggg', () => {
+    const tree = renderer.create(<ApodCard />).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  })  
+});
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+`;
 
 const CardContainer = styled.div`
   width: 100%;
@@ -32,13 +58,16 @@ function App() {
   }, [date]);
 
 return (
-  <CardContainer>
-    <DatePicker>
-      <h2>Pick your date to visit:</h2>
-      <input onChange={e => setDate(e.target.value)} type="date" />
-    </DatePicker>
-      <ApodCard title={apodData.title} copyright={apodData.copyright} date={apodData.date} explanation={apodData.explanation} imgUrl={apodData.hdurl}/>
-    </CardContainer>
+  <>
+    <GlobalStyle />
+    <CardContainer>
+      <DatePicker>
+        <h2>Pick your date to visit:</h2>
+        <input onChange={e => setDate(e.target.value)} type="date" />
+      </DatePicker>
+        <ApodCard title={apodData.title} copyright={apodData.copyright} date={apodData.date} explanation={apodData.explanation} imgUrl={apodData.hdurl}/>
+      </CardContainer>
+    </>
   );
 }
 
